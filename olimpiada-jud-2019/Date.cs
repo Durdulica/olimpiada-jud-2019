@@ -42,13 +42,11 @@ namespace olimpiada_jud_2019
             return carti;
         }
 
-        public static List<Imprumut> CitesteImprumuturi(string cale)
+        public static List<Imprumut> CitesteImprumuturi(string cale, List<Carte> carti)
         {
             List<Imprumut> imprumuturi = new List<Imprumut>();
             var reader = new StreamReader(Path.Combine(cale, "imprumuturi.txt"));
             string linie;
-
-            var carti = CitesteCarti(cale);
 
             while ((linie = reader.ReadLine()) != null)
             {

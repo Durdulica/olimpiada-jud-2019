@@ -13,10 +13,15 @@ namespace olimpiada_jud_2019
     public partial class LogareFreeBook : Form
     {
         List<Utilizator> utilizatori;
-        public LogareFreeBook(string cale)
+        List<Carte> carti;
+        List<Imprumut> imprumut;
+
+        public LogareFreeBook(List<Utilizator> utilizatori, List<Carte> carti, List<Imprumut> imprumut)
         {
             InitializeComponent();
-            utilizatori = Date.CitesteUtilizatori(cale);
+            this.utilizatori = utilizatori;
+            this.carti = carti;
+            this.imprumut = imprumut;
         }
 
         private void btnLogare_Click(object sender, EventArgs e)
@@ -45,7 +50,7 @@ namespace olimpiada_jud_2019
                 return;
             }
 
-            MeniuFreeBook meniu = new MeniuFreeBook(u);
+            MeniuFreeBook meniu = new MeniuFreeBook(u, utilizatori, carti, imprumut);
             Hide();
             meniu.Show();
         }

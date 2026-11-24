@@ -13,10 +13,14 @@ namespace olimpiada_jud_2019
     public partial class CreeazaContFreeBook : Form
     {
         List<Utilizator> utilizatori;
-        public CreeazaContFreeBook(string cale)
+        List<Carte> carti;
+        List<Imprumut> imprumut;
+        public CreeazaContFreeBook(List<Utilizator> utilizatori, List<Carte> carti, List<Imprumut> imprumuturi)
         {
             InitializeComponent();
-            utilizatori = Date.CitesteUtilizatori(cale);
+            this.utilizatori = utilizatori;
+            this.carti = carti;
+            this.imprumut = imprumuturi;
         }
 
         private void btnInregistrare_Click(object sender, EventArgs e)
@@ -45,6 +49,8 @@ namespace olimpiada_jud_2019
             if (utilizatori.Any(x => x.email == txtEmail.Text)) 
             {
                 MessageBox.Show("Exista deja un utilizator cu acest email", "Validare", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Focus();
+                return;
             }
 
             if (txtParola.Text == string.Empty)
@@ -63,7 +69,7 @@ namespace olimpiada_jud_2019
             }
 
             Utilizator u = new Utilizator(txtEmail.Text, txtParola.Text, txtNume.Text, txtPrenume.Text);
-            MeniuFreeBook meniu = new MeniuFreeBook(u);
+            MeniuFreeBook meniu = new MeniuFreeBook(u, utilizatori, carti, imprumut);
             Hide();
             meniu.Show();
         }

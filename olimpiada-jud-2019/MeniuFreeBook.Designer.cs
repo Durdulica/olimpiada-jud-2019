@@ -32,17 +32,15 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabDisponibile = new System.Windows.Forms.TabPage();
             this.tabImprumutate = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Titlu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataImprumut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvImprumut = new System.Windows.Forms.DataGridView();
             this.tabStatistici = new System.Windows.Forms.TabPage();
             this.lblIesire = new System.Windows.Forms.Label();
+            this.dgvDisponibile = new System.Windows.Forms.DataGridView();
             this.tabControl.SuspendLayout();
+            this.tabDisponibile.SuspendLayout();
             this.tabImprumutate.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvImprumut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDisponibile)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEmail
@@ -67,6 +65,7 @@
             // 
             // tabDisponibile
             // 
+            this.tabDisponibile.Controls.Add(this.dgvDisponibile);
             this.tabDisponibile.Location = new System.Drawing.Point(4, 28);
             this.tabDisponibile.Name = "tabDisponibile";
             this.tabDisponibile.Padding = new System.Windows.Forms.Padding(3);
@@ -77,7 +76,7 @@
             // 
             // tabImprumutate
             // 
-            this.tabImprumutate.Controls.Add(this.dataGridView1);
+            this.tabImprumutate.Controls.Add(this.dgvImprumut);
             this.tabImprumutate.Location = new System.Drawing.Point(4, 28);
             this.tabImprumutate.Name = "tabImprumutate";
             this.tabImprumutate.Padding = new System.Windows.Forms.Padding(3);
@@ -86,49 +85,14 @@
             this.tabImprumutate.Text = "Carti Imprumutate";
             this.tabImprumutate.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvImprumut
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Index,
-            this.Titlu,
-            this.Autor,
-            this.DataImprumut,
-            this.Data});
-            this.dataGridView1.Location = new System.Drawing.Point(23, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(788, 218);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // Index
-            // 
-            this.Index.HeaderText = "Index";
-            this.Index.Name = "Index";
-            this.Index.ReadOnly = true;
-            // 
-            // Titlu
-            // 
-            this.Titlu.HeaderText = "Titlu";
-            this.Titlu.Name = "Titlu";
-            this.Titlu.ReadOnly = true;
-            // 
-            // Autor
-            // 
-            this.Autor.HeaderText = "Autor";
-            this.Autor.Name = "Autor";
-            this.Autor.ReadOnly = true;
-            // 
-            // DataImprumut
-            // 
-            this.DataImprumut.HeaderText = "Data imprumut";
-            this.DataImprumut.Name = "DataImprumut";
-            this.DataImprumut.ReadOnly = true;
-            // 
-            // Data
-            // 
-            this.Data.HeaderText = "Data Disponibilitate";
-            this.Data.Name = "Data";
-            this.Data.ReadOnly = true;
+            this.dgvImprumut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvImprumut.Location = new System.Drawing.Point(23, 6);
+            this.dgvImprumut.Name = "dgvImprumut";
+            this.dgvImprumut.Size = new System.Drawing.Size(788, 218);
+            this.dgvImprumut.TabIndex = 0;
+            this.dgvImprumut.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // tabStatistici
             // 
@@ -149,6 +113,14 @@
             this.lblIesire.TabIndex = 2;
             this.lblIesire.Text = "Apasati tasta ESC pentru a iesi";
             // 
+            // dgvDisponibile
+            // 
+            this.dgvDisponibile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDisponibile.Location = new System.Drawing.Point(6, 16);
+            this.dgvDisponibile.Name = "dgvDisponibile";
+            this.dgvDisponibile.Size = new System.Drawing.Size(829, 277);
+            this.dgvDisponibile.TabIndex = 0;
+            // 
             // MeniuFreeBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -166,8 +138,10 @@
             this.Text = "MeniuFreeBook";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MeniuFreeBook_FormClosed);
             this.tabControl.ResumeLayout(false);
+            this.tabDisponibile.ResumeLayout(false);
             this.tabImprumutate.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvImprumut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDisponibile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,13 +153,9 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabDisponibile;
         private System.Windows.Forms.TabPage tabImprumutate;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvImprumut;
         private System.Windows.Forms.TabPage tabStatistici;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Index;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Titlu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataImprumut;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Data;
         private System.Windows.Forms.Label lblIesire;
+        private System.Windows.Forms.DataGridView dgvDisponibile;
     }
 }

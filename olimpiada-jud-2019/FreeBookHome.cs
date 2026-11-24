@@ -23,12 +23,12 @@ namespace olimpiada_jud_2019
             InitializeComponent();
             utilizatori = Date.CitesteUtilizatori(path);
             carti = Date.CitesteCarti(path);
-            imprumuturi = Date.CitesteImprumuturi(path);
+            imprumuturi = Date.CitesteImprumuturi(path, carti);
         }
 
         private void btnInregistrare_Click(object sender, EventArgs e)
         {
-            CreeazaContFreeBook creeazaCont = new CreeazaContFreeBook(path);
+            CreeazaContFreeBook creeazaCont = new CreeazaContFreeBook(utilizatori, carti, imprumuturi);
             Hide();
             creeazaCont.Show();
             return;
@@ -47,7 +47,7 @@ namespace olimpiada_jud_2019
 
         private void btnLogare_Click(object sender, EventArgs e)
         {
-            LogareFreeBook logare = new LogareFreeBook(path);
+            LogareFreeBook logare = new LogareFreeBook(utilizatori, carti, imprumuturi);
             Hide();
             logare.Show();
             return;
