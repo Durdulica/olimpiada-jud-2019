@@ -26,9 +26,11 @@ namespace olimpiada_jud_2019
             lblEmail.Text = "Email utilizator: " + utilizator.email;
             IncarcaColoaneImprumutate();
             IncarcaColoaneDisponibile();
+            IncarcaColoaneStatistici();
 
             ReincarcaTablelImprumutate();
             ReincarcaTabelDisponibile();
+            ReincarcaTabelStatistici();
         }
 
         public void IncarcaColoaneImprumutate()
@@ -56,6 +58,11 @@ namespace olimpiada_jud_2019
             dgvDisponibile.Columns.Add("imprumuta", "Imprumuta carte");
         }
 
+        public void IncarcaColoaneStatistici()
+        {
+
+        }
+
         public void ReincarcaTablelImprumutate()
         {
             seReincarca = true;
@@ -67,9 +74,9 @@ namespace olimpiada_jud_2019
             {
                 Carte carte = carti.FirstOrDefault(x => Guid.Equals(x.id_carte, imp.id_carte));
                 rand = dgvImprumut.Rows.Add(rand + 1, carte.titlu, carte.autor, 
-                    imp.data_imprumut.ToString("dd/MM/yyyy HH:mm"), imp.data_imprumut.AddDays(30).ToString("dd/MM/yyyy HH:mm"));
+                    imp.data_imprumut, imp.data_imprumut + 30);
 
-                if(DateTime.Compare(imp.data_imprumut.AddDays(30), DateTime.Now) < 0)
+                if(imp.data_imprumut + 30 == "")//???
                 {
                     dgvImprumut.Rows[rand].DefaultCellStyle.BackColor = Color.Red;
                 }
@@ -96,6 +103,12 @@ namespace olimpiada_jud_2019
             seReincarca = false;
         }
 
+        public void ReincarcaTabelStatistici()
+        {
+            seReincarca = true;
+
+            seReincarca = false;
+        }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if(keyData == Keys.Escape)

@@ -16,7 +16,7 @@ namespace olimpiada_jud_2019
         List<Utilizator> utilizatori = new List<Utilizator>();
         List<Carte> carti = new List<Carte>();
         List<Imprumut> imprumuturi = new List<Imprumut>();
-        readonly string path = Path.Combine(Application.StartupPath, "..", "..", "..", "csarp");
+        readonly string path = Path.Combine(Application.StartupPath, "..", "..", "Fisiere");
 
         public FreeBookHome()
         {
